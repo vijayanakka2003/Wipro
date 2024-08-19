@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+class MostFrequentlyOccurringDigitV2 {
+    public int mostFrequentlyOccurringDigit(int[] input1, int input2) {
+        int[] freq = new int[10];
+        
+        for (int ip : input1) {
+            while (ip > 0) {
+                int digit = ip % 10;
+                freq[digit]++;
+                ip /= 10;
+            }
+        }
+
+        int maxFreqIndex = 0;
+        int maxFreq = 0;
+        for (int i = 9; i >= 0; i--) {
+            if (freq[i] > maxFreq) {
+                maxFreqIndex = i;
+                maxFreq = freq[i];
+            }
+        }
+
+        return maxFreqIndex;
+    }
+}
